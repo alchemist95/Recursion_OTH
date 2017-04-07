@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+  <link href="css/default.css" rel="stylesheet">
+</head>
+<body>
+<h1 align="center">Leaderboard</h1>
+
+<div class="container">
+  <div class="row">
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Name</th>
+              
+              <th>Score</th>
+            </tr>
+          </thead>
+          <tbody id="myTable">
+          <%@users.each do|u| %>
+            <tr>
+              <td><%= @id %></td>
+              <td><%= u.name %></td>
+              <td><%= u.score %></td>
+           </tr>
+          <% @id=@id+1 %>
+          <% end %>
+          </tbody>
+        </table>   
+      </div>
+      <div class="col-md-12 text-center">
+      <ul class="pagination pagination-lg pager" id="myPager"></ul>
+      </div>
+  </div>
+</div>
+
+
+</body>
+</html>

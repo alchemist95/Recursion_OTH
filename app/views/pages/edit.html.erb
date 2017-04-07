@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>my_profile</title>
+    
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= csrf_meta_tags %> 
+    <style >
+    	body{
+
+    		background-image: url("https://wallpaperscraft.com/image/keyboard_laptop_macro_73432_1920x1080.jpg");
+         background-repeat: no-repeat;/*we want to have one single image not a repeated one*/  
+   background-size: cover;
+    		text-align: center;
+    		margin-left: 100px;
+        
+
+    	}
+      
+    	h3{
+        font-family: "Tibetan Machine Uni";
+       }
+       p{
+        font-family: "Bitstream Charter";
+        text-align: left;
+        font-size: 1em;
+       }
+    </style>
+  </head>
+
+  <body>
+
+
+<%= form_for(@user) do |f| %>
+<br/>
+<div class="container">
+  <div class="row">
+  <div class="col-md-3">
+  </div>
+  <div class="col-md-6">
+
+  <div class="panel panel-warning">
+      <div class="panel-heading">
+    <h3>Edit Your Profile
+  <span style="float:right"><a href="home" class="btn btn-info" role="button">Back</a> 
+  <a href="update" class="btn btn-success" role="button">Update</a> </span>
+  </h3>
+</div>
+  
+        <div class="panel-body">
+          <div class="form-group">
+         <p> <%= f.label :name %>
+              <%= @user.name%> </p>
+      </div>
+
+
+           <p> <%= f.label :score %>
+            <%= @user.score%></p>
+           
+            <!-- <div class="form-group">
+                <%#= f.label :dob%>
+                <div class='input-group date' id='datetimepicker1'>
+                   <%#= f.text_field :dob, class: "form-control"%>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div> -->
+
+<br />
+            
+           <p> <%=f.label :college %>
+            <% if @user.college == nil %>
+             
+            <%= f.text_area :college,class: 'form-control',:rows =>"1" %>
+            <% else %>
+            <%= @user.college %>
+            <% end %>
+             </p>
+            
+<br />
+        </div>
+        </div>
+  </div>
+  </div>
+
+<div class="col-md-3">
+  </div>
+
+
+</div>
+</div>
+
+<% end %>
+
+
+
+
+</body>
+</html>

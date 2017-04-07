@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>my_profile</title>
+    
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= csrf_meta_tags %> 
+    <style >
+    	body{
+
+    		background-image: url("https://wallpaperscraft.com/image/keyboard_laptop_macro_73432_1920x1080.jpg");
+         background-repeat: no-repeat;/*we want to have one single image not a repeated one*/  
+   background-size: cover;
+    		text-align: center;
+    		margin-left: 100px;
+        
+
+    	}
+      h1{
+        color: white;
+      }
+    	
+
+    </style>
+  </head>
+
+  <body>
+<%= form_for(@user) do |f| %>
+
+<div class="container">
+  <div class="row">
+  <div class="col-md-3">
+  </div>
+  <div class="col-md-6">
+
+  <div class="panel panel-warning">
+      <div class="panel-heading"><h3 style="text-align: center">Edit Your Profile
+  <span style="float:right"><div class="btn-group"><%= link_to "Back", root_path, class:"btn btn-primary" %><%= f.submit "Update", class: 'btn btn-success' %></span></div></h3>
+  </div>
+        <div class="panel-body">
+          <div class="form-group">
+          <%= f.label :name %>
+      <%= f.text_area :name, class: 'form-control' %>
+      </div>
+<br />
+
+            <div class="form-group">
+            <%= f.label :score %><br />
+            <%= @user.score%>
+            </div>
+            <!-- <div class="form-group">
+                <%#= f.label :dob%>
+                <div class='input-group date' id='datetimepicker1'>
+                   <%#= f.text_field :dob, class: "form-control"%>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>   
+            </div> -->
+<br />
+            <div class="form-group">
+            <%=f.label :college %>
+            <%= f.text_area :college, class: 'form-control' %>
+            
+            </div>
+<br />
+        </div>
+  </div>
+  </div>
+
+<div class="col-md-3">
+  </div>
+
+
+</div>
+</div>
+
+
+
+<% end %>
+
+</body>
+</html>
