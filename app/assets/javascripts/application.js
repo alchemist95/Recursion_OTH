@@ -39,7 +39,6 @@ $(document).ready(function() {
 					var myLevel = myScore/10 + 1;
 					$("#myScore").text(myScore);
 					$("#hunt").hide();
-					$("#myResult").html("<script>toastr['info']('Your Hunt ends!! :)');</script>");
 					location.href = '/victory'
 				}
 				else{
