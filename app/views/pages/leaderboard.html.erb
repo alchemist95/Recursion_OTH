@@ -24,7 +24,7 @@
             <tr>
               <td><%= @id %></td>
               <td><%= u.name %></td>
-              <td><%= image_tag(current_user.image_url, size: '35x35') %>&nbsp;&nbsp;</td>
+              <td><%= image_tag(u.image_url, size: '35x35') %>&nbsp;&nbsp;</td>
               <td><%= u.score %></td>
            </tr>
           <% @id=@id+1 %>
