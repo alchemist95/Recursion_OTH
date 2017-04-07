@@ -14,14 +14,16 @@
       background-size:100% 100%;
         background-repeat: no-repeat;/*we want to have one single image not a repeated one*/
    background-size: cover;
-      padding-left: 50px;
-      margin-top: 130px;
+      padding-left: 40px;
+      margin-top: 60px;
     }
 
     #answerForm{
-          width: 20em;  height: 2em;
+          width: 5em;  height: 5em;
     }
-
+    h2{
+      font-family: "Bitstream Charter";
+    }
   </style>
 </head>
 <body>
@@ -55,7 +57,10 @@
 
       <% if current_user!=nil %>
       <li><a>Score:<span id="myScore"><%= current_score %></span></a></li>
-      <li><a>Level:<span id="myLevel"><%= (current_score==0)?1:current_score/10+1 %></span></a></li>
+      <li><a>Level:<span id="myLevel">
+      <% if @question!=nil%>
+      <%= (current_score==0)?1:current_score/10+1 %><%end%></span></a></li>
+
       <li><%= image_tag(current_user.image_url, size: '50x50') %>&nbsp;&nbsp;</li>
       <li class="dropdown">
 
@@ -77,31 +82,40 @@
 </div>
 
 
+<div class="container">
+  <% if current_user %>
+      <div id="hunt">
+        <% if @question!=nil %>
+          <div id="myQuestion">         
+           <span><%= raw(@question.statement) %></span>           
+          </div>
 
+          <span id="myImage">
+          <% if @question.imageurl!=nil %>
+         <%= image_tag(@question.imageurl)%>
+          <%end %>
+          </span>
 
+            <span id="myAudio">
+            <% if @question.audiourl!=nil %>
+            <%= audio_tag(@question.audiourl, autoplay: false, controls: true) %>
+            <%end%> 
 
+           </br></br>
+            <form id="answerForm">
+            <input type="text-area" name="answer" id="myAnswerText" rows="2" cols="10"></br> 
+            <input type="submit" value="Submit" name="submit" id="myAnswer" >
+            </form>
 
+         
+            <br /><br />
 
-<% if current_user %>
-<div class="container" id="userPro">
-<div id="hunt">
-<% if @question!=nil %>
-  <div id="myQuestion">
-  <h2><%= @question.statement %></h2>
-  <span id="myImage"><%= image_tag(@question.imageurl)%></span>
+            </div>
+            
+        <% end %>
+      
+  <div id="myResult">
   </div>
-  <br /><br />
 
-
-  <form id="answerForm">
-  <input type="text" name="answer" id="myAnswerText" placeholder="Type your answer here">
-  <input type="submit" name="submit" id="myAnswer">
-  </form>
   <% end %>
-  </div>
-
-
-<div id="myResult">
 </div>
-
-<% end %>

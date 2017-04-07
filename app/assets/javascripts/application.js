@@ -19,26 +19,6 @@
 //= require toastr_rails
 
 
-$(document).ready(function() {
-
-
- toastr.options = {
-									"closeButton": false,
-									"debug": false,
-									"positionClass": "toast-bottom-right",
-									"onclick": null,
-									"showDuration": "300",
-									"hideDuration": "1000",
-									"timeOut": "5000",
-									"extendedTimeOut": "1000",
-									"showEasing": "swing",
-									"hideEasing": "linear",
-									"showMethod": "fadeIn",
-									"hideMethod": "fadeOut"
-							}
-
-});
-
 
 $(document).ready(function() {
 
@@ -58,20 +38,19 @@ $(document).ready(function() {
 					var myScore = data["Score"];
 					var myLevel = myScore/10 + 1;
 					$("#myScore").text(myScore);
-					$("#myLevel").text(myLevel);
 					$("#hunt").hide();
-
 					$("#myResult").html("<script>toastr['info']('Your Hunt ends!! :)');</script>");
+					location.href = '/victory'
 				}
 				else{
 					var statement = data["Statement"];
 					var image = data["Image"];
 					var myScore = data["Score"];
 					var myLevel = myScore/10 + 1;
-					var h2 = $("#myQuestion").find("h2");
-					$("#myQuestion").find("span").hide();
-					$(h2).text(statement);
-					$("#myQuestion").append('<span><img src=\"/images/'+image+'\"></span>');
+					var h2 = $("#myQuestion").find("span");
+					$("#myImage").hide();
+					$(h2).html(statement);
+					$("#myImage").append('<span><img src=\"/images/'+image+'\"></span>');
 					$("#myScore").text(myScore);
 					$("#myLevel").text(myLevel);
 					$("#myResult").html("<script>toastr['info']('Correct Answer. Level Up!!');</script>");

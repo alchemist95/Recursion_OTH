@@ -10,6 +10,9 @@ class PagesController < ApplicationController
   end
 
 	def index
+    if @question == nil
+      redirect_to victory_path
+    end
 	end
 
   def abdv

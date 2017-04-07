@@ -73,7 +73,14 @@
       </li>
 
       <% if current_user!=nil %>
-      <li><a href="#">Score: <%= current_user.score %> </a></li>
+      <li><a>Score:<span id="myScore"><%= current_score %></span></a></li>
+      <% if @question!=nil%>
+      <li><a>Level:<span id="myLevel">
+      
+      <%= (current_score==0)?1:current_score/10+1 %>
+        <%end%>
+      </span></a></li>
+      <li><%= image_tag(current_user.image_url, size: '50x50') %>&nbsp;&nbsp;</li>
       <li class="dropdown">
 
          <a  class="dropdown-toggle" data-toggle="dropdown" href="#"><%= current_user.name %> <span class="caret"></span></a>
@@ -113,19 +120,6 @@
     <%end %>
     </p>
 
-<script src="js/jquery.js"></script>
-<script src="js/jquery.scrollTo.js"></script>
-<script src="js/jquery.nav.js"></script>
-<script src="js/jquery.localscroll-1.2.7-min.js"></script>
-<script src="js/bootstrap.js"></script>
-<script src="js/jquery.prettyPhoto.js"></script>
-<script src="js/isotope.js"></script>
-<script src="js/jquery.flexslider.js"></script>
-<script src="js/inview.js"></script>
-<script src="js/animate.js"></script>
-<script src="js/validate.js"></script>
-<script src="js/custom.js"></script>
-<script src="contactform/contactform.js"></script>
 
 </body>
 </html>

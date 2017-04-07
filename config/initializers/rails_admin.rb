@@ -44,4 +44,15 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+
+  config.model Question do
+    edit do
+      field :statement, :ck_editor
+      field :answer
+      field :imageurl
+      field :audiourl
+    end
+  end
+
+
 end
