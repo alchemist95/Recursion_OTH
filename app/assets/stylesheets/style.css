@@ -131,8 +131,7 @@ a.scrollup i:hover {
 
 input[type=text], input[type=submit], textarea{
 	width: 100%;
-	font-family: "Bitstream Charter"
-	padding: 1em;
+	font-family: "Bitstream Charter";
 	font-size: 1em;
 	margin-bottom: 1.5em;
 	box-sizing: border-box;
