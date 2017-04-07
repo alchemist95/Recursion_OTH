@@ -10,6 +10,7 @@ class PagesController < ApplicationController
   end
 
 	def index
+    flash.clear
     if @question == nil
       redirect_to victory_path
     end
@@ -17,7 +18,6 @@ class PagesController < ApplicationController
     if params[:answer].present?
       flash[:notice] = "Couldn't receive that answer. Please try again :)"
     end
-    flash.clear
 	end
 
   def abdv
