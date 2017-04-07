@@ -13,14 +13,16 @@ class PagesController < ApplicationController
     if @question == nil
       redirect_to victory_path
     end
+
+    if params[:answer].present?
+      flash[:notice] = "Couldn't receive that answer. Please try again :)"
+    end
+
 	end
 
   def abdv
     answer = params[:myAnswer]
-    puts answer
     right_answer = @question.answer
-    puts "htll"
-    puts right_answer
     if answer==right_answer
       user = current_user
       user.score = user.score+10
