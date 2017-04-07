@@ -113,9 +113,9 @@
 <p>For any queries,contact:: Richa Agarwal(+91-8016042603), Anjali Agrawal(+91-7063494551)</p>
 </br>
 </br>
-<p><% if current_user %>
+<p><% if current_user && current_user.score!=180%>
     <div class="text-center" style="font-family: Bitstream Charter">
-    <a href="index" class="btn btn-success" role="button">Go to treasure hunt</a>
+    <%= link_to "Go to Treasure Hunt", index_path, class: "btn btn-success"%>
     </div>
     <%end %>
     </p>

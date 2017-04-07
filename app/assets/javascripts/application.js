@@ -18,10 +18,7 @@
 //= require bootstrap
 //= require toastr_rails
 
-
-
 $(document).ready(function() {
-
 	$("#myAnswer").click(function(event){
 		event.preventDefault();
 		console.log("Idhar");		
