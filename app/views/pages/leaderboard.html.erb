@@ -28,6 +28,7 @@
               <td><%= image_tag(u.image_url, size: '35x35') %>&nbsp;&nbsp;</td>
               <td><%= u.score %></td>
            </tr>
+          <% @id=@id+1 %>
           <% end %>
           </tbody>
         </table>   

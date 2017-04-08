@@ -7,6 +7,7 @@ class PagesController < ApplicationController
   def leaderboard
     @users=User.all.order(updated_at: :desc)
     @users=@users.sort_by(&:score).reverse
+    @id=1
   end
 
 	def index
