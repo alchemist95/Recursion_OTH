@@ -1,6 +1,8 @@
 class PagesController < ApplicationController
   before_action :set_auth
   before_action :find_question, only: [:index, :abdv]
+  before_action :open_on_day, only: [:index, :home, :victory]
+
 
   def leaderboard
     @users=User.all.order(updated_at: :desc)
@@ -49,12 +51,6 @@ class PagesController < ApplicationController
   end
 
 	def home
-    time = Time.new
-    day = time.day
-    if day != 15
-      redirect_to wait_path
-    end
-
     user=current_user
   end
 
@@ -85,6 +81,14 @@ class PagesController < ApplicationController
 
 
   private
+
+  def open_on_day
+    time = Time.new
+    day = time.day
+    if day != 15
+      redirect_to wait_path
+    end
+  end
 
   def find_question
     if Question.exists?(id: current_score/10+1)
