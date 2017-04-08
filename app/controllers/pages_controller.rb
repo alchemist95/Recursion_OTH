@@ -7,8 +7,6 @@ class PagesController < ApplicationController
   def leaderboard
     @users=User.all.order(updated_at: :desc)
     @users=@users.sort_by(&:score).reverse
-    @users = @users.paginate(page: params[:page], per_page: 10)
-    @id=1
   end
 
 	def index
