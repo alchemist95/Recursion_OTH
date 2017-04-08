@@ -10,13 +10,8 @@ class PagesController < ApplicationController
   end
 
 	def index
-    flash.clear
     if @question == nil
       redirect_to victory_path
-    end
-
-    if params[:answer].present?
-      flash[:notice] = "Couldn't receive that answer. Please try again :)"
     end
 	end
 
@@ -50,8 +45,17 @@ class PagesController < ApplicationController
  
   end
 
+  def wait
+  end
+
 	def home
-     user=current_user
+    time = Time.new
+    day = time.day
+    if day != 15
+      redirect_to wait_path
+    end
+
+    user=current_user
   end
 
   def victory
