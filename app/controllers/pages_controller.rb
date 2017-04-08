@@ -14,6 +14,18 @@ class PagesController < ApplicationController
     if @question == nil
       redirect_to victory_path
     end
+
+    if params[:answer].present? && params[:answer] == @question.answer
+      user = current_user
+      user.score = user.score+10
+      user.save!
+      find_question
+      if @question == nil
+        redirect_to victory_path
+      else
+        flash[:notice] = 'Correct Answer. Level Up!!'
+      end
+    end
 	end
 
   def abdv
@@ -83,8 +95,8 @@ class PagesController < ApplicationController
 
   def open_on_day
     time = Time.new
-    day = time.day
-    if day != 15
+    day = time.day.to_s
+    if day != "15"
       redirect_to wait_path
     end
   end
