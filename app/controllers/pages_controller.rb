@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   before_action :set_auth
   before_action :find_question, only: [:index, :abdv]
-  before_action :open_on_day, only: [:home]
+  before_action :open_on_day, only: [:index, :home, :victory]
 
 
   def leaderboard
