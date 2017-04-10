@@ -90,7 +90,7 @@
           </div>
 
           <span id="myImage">
-          <% if @question.imageurl!=nil %>
+          <% if @question.imageurl!="noimg.png" %>
           <%= image_tag(@question.imageurl)%>
           <%end %>
           </span>
@@ -103,7 +103,6 @@
 
            </br></br>
             <form id="answerForm">
-
             <input type="text-area" name="answer" id="myAnswerText" style="font-size:18pt;height:40px;width: 600px;"><br /><br />
             <input class="btn btn-info" type="submit" value="Hit" name="submit" id="myAnswer">
             </form>
