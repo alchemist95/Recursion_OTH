@@ -22,7 +22,11 @@
           </thead>
           <tbody id="myTable">
           <%@users.each do|u| %>
-            <tr>
+          <% if u == current_user %>
+          <tr bgcolor="#ecf0f1">
+          <% else %>
+          <tr>
+          <% end %>
               <td><%= @id %></td>
               <td><%= u.name %></td>
               <td><%= image_tag(u.image_url, size: '35x35') %>&nbsp;&nbsp;</td>
