@@ -44,9 +44,8 @@ $(document).ready(function() {
 					var myScore = data["Score"];
 					var myLevel = myScore/10 + 1;
 					var h2 = $("#myQuestion").find("span");
-					$("#myImage").hide();
 					$(h2).html(statement);
-					$("#myImage").append('<span><img src=\"/images/'+image+'\"></span>');
+					$("#myImage").html('<span><img src=\"/images/'+image+'\"></span>');
 					$("#myScore").text(myScore);
 					$("#myLevel").text(myLevel);
 					$("#myResult").html("<script>toastr['info']('Correct Answer. Level Up!!');</script>");

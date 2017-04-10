@@ -9,8 +9,7 @@
    width: 100%;
 
       background-image: url("http://www.guoguiyan.com/data/out/144/69896840-papyrus-wallpapers.jpeg");
-      overflow-x:hidden;
-    overflow-y:hidden;
+      overflow: scroll;
       background-size:100% 100%;
         background-repeat: no-repeat;/*we want to have one single image not a repeated one*/
    background-size: cover;
@@ -92,7 +91,7 @@
 
           <span id="myImage">
           <% if @question.imageurl!=nil %>
-         <%= image_tag(@question.imageurl)%>
+          <%= image_tag(@question.imageurl)%>
           <%end %>
           </span>
 
