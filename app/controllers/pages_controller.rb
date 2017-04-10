@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   before_action :set_auth
   before_action :find_question, only: [:index, :abdv]
   before_action :open_on_day, only: [:index, :home, :victory]
-
+  before_action :authenticate, only: [:index]
 
   def leaderboard
     @users=User.all.order(updated_at: :desc)
@@ -94,6 +94,9 @@ class PagesController < ApplicationController
   private
 
   def open_on_day
+    if current_user && current_user.admin?
+      return
+    end
     time = Time.new
     day = time.day.to_s
     if day != "15"
