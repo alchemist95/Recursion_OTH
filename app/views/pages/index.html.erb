@@ -97,7 +97,7 @@
           </span>
 
             <span id="myAudio">
-            <% if @question.audiourl!=nil %>
+            <% if !@question.audiourl.empty? %>            
             <%= audio_tag(@question.audiourl, autoplay: false, controls: true) %>
             <%end%> 
             </span>
