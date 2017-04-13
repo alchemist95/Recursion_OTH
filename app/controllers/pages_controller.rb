@@ -1,10 +1,11 @@
 class PagesController < ApplicationController
   before_action :set_auth
   before_action :find_question, only: [:index, :abdv]
-  before_action :open_on_day, only: [:index, :home, :victory]
+#  before_action :open_on_day, only: [:index, :home, :victory]
   before_action :authenticate, only: [:index]
 
   def leaderboard
+    flash.clear
     @users=User.all.order(updated_at: :desc)
     @users=@users.sort_by(&:score).reverse
     @id=1

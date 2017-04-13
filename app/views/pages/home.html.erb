@@ -6,6 +6,7 @@
 <link href="css/style.css" rel="stylesheet">
 <link href="css/default.css" rel="stylesheet">
 <link rel="shortcut icon" href="assets/images/favicon.ico">
+
 <!-- =======================================================
     Theme Name: Maxim
     Theme URL: https://bootstrapmade.com/maxim-free-onepage-bootstrap-theme/
@@ -15,111 +16,103 @@
 <style >
   body{
     height: 100%;
-   width: 100%;
+    width: 100%;
 
-     background-image: url("home.jpg");
+     /*background-image: url("3.jpg");*/
      background-repeat: no-repeat;/*we want to have one single image not a repeated one*/
-   background-size: cover;
+     background-size: cover;
+     overflow: hidden;
+     background-image:  linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)),url("3.jpg");
   }
-  h1{
-    margin-top: 50px;
+    h1{
+    /*margin-top: 50px;*/
     margin-left: 50px;
-    color: blue;
+    color: yellow;
     text-shadow: inherit;
     text-decoration-style: solid;
     font-weight: 1000;
-    font-size: 60px;
-    font-family: "URW Chancery L";
+    font-size: 70px;
+    font-family: "Supercell-magic";
+    /*float:right;*/
+    padding-right: 80px;
+    /*padding-top: 50px;*/
+
   }
-  h2,p{
-      margin-left: 50px;
-      margin-right: 50px;
-    color: white;
+
+  .matter{
     text-shadow: inherit;
     text-decoration-style: solid;
-    font-weight: 700;
-    font-size: 30px;
-    font-family: "URW Chancery L";
+    /*font-weight: 700;*/
+    font-size: 17px;
+    font-family: "Supercell-magic";
+    /*float:right;*/
+    padding-right: 80px;
+    color:#3A539B;
+
+
+  }
+
+  .contact{
+    color:white;
+    font-family: "Supercell-magic";
+    float: right;
+    /*padding-right: 80px;
+    padding-top:300px;
+    padding-bottom: 10px;*/
+    margin-top: 110px;
+    margin-right: 50px;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+
+  }
+
+  #mybutton{
+    /*padding-right: 80px;
+    padding-left: 100px;*/
+    margin-left: 0px;
+    margin-right: 0px;
+     
   }
 </style>
 </head>
 <body>
-<!-- navbar -->
-<div class="navbar-wrapper">
 
- <nav class="navbar navbar-inverse navbar-fixed-top">
- <div class="navbar-inner">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <h1 class="brand"> <a  href="#">Quaerere</a> </h1>
+<div class="col-md-6 col-md-offset-6">
+    <h1>ReChase</h1>
+    <br/>
+    <div class="matter">
+      <p>
+        <div id="about">
+          <p>
+            Welcome to the treasure hunt!!!
+
+You need to solve the question to unlock the treasure.Since the motto of RECursion is to help people,we provide you the biggest help possible-"GOOGLE". So,guys exploit your searching abilities,wake up your grey cells and get the treasure.
+PS: Plz read the rules.
+<br/>
+<br/>
+
+          <div id="mybutton">
+          <% if current_user && current_user.score!=180%>
+              <%= link_to "Go to Hunt", index_path, class: "btn btn-danger"%>
+                 <%= link_to "Leaderboard", leaderboard_path, class: "btn btn-success"%>     
+              <%= link_to "Sign out", 'sign_out', method: :delete , class: "btn btn-info"%>
+          <% else %>
+              <%= link_to "Facebook", '/auth/facebook', class: "btn btn-info"%>
+              <%= link_to "Google+", '/auth/google_oauth2', class: "btn btn-danger"%>
+              <%= link_to "Leaderboard", leaderboard_path, class: "btn btn-success"%>
+              
+              <%end %>
+        </div>
+      </div>
+      </p>
     </div>
-    <ul id="menu-main" class="nav navbar-nav navbar-right">
-    <% if current_user && current_user.admin? %>
-    <li><%= link_to "ADMIN",rails_admin_path %></li>
-    <% end %>
-    <li><a title="team" href="home">Home</a></li>
-        <% if current_user!=nil %>
-         <li><a title="team" href="leaderboard">Leaderboard</a></li>
-         <% end %>
-          <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Rules
-        <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a>1. Write all answers in lowercase.</a></li>
-          <li><a>2. Don't include space between two words.</a></li>
-          <li><a>3. Try to link the question with the image and audio.</a></li>
-
-        </ul>
-      </li>
-
-      <% if current_user!=nil %>
-      <li><a>Score:<span id="myScore"><%= current_score %></span></a></li>
-      <% if @question!=nil%>
-      <li><a>Level:<span id="myLevel">
-      
-      <%= (current_score==0)?1:current_score/10+1 %>
-        <%end%>
-      </span></a></li>
-      <li><%= image_tag(current_user.image_url, size: '50x50') %>&nbsp;&nbsp;</li>
-      <li class="dropdown">
-
-         <a  class="dropdown-toggle" data-toggle="dropdown" href="#"><%= current_user.name %> <span class="caret"></span></a>
-       <ul class="dropdown-menu">
-
-          <li><%= link_to "Sign out", 'sign_out', method: :delete , class: "nav-link"%></li>
-        </ul>
-      </li>
-      <% else %>
-      <li><a>Login ::</a></li>
-      <li ><a href="auth/facebook"> <img border="0" alt="facebook" src="fb.jpg" class="img-circle"width="30" height="30"></a></li>
-      <li ><a href="/auth/google_oauth2"> <img border="0" alt="Gmail" src="gmail.jpg" class="img-circle" width="30" height="30"></a></li>
-      <% end %>
-    </ul>
-  </div>
-  </div>
-</nav>
 </div>
-<!-- Header area -->
 
-
-
-</section>
-
-
-<h1>ABOUT</h1>
-<h2>Welcome to the treasure hunt!!!</h2>
-<p>You need to solve the question to unlock the treasure.Since the motto of RECursion is to help people,we provide you the biggest help possible-"GOOGLE". So,guys exploit your searching abilities,wake up your grey cells and get the treasure.</p>
-<p>PS: Plz read the rules.</p>
-<p>For any queries,contact:: Richa Agarwal(+91-8016042603), Anjali Agrawal(+91-7063494551)</p>
-</br>
-</br>
-<p><% if current_user && current_user.score!=180%>
-    <div class="text-center" style="font-family: Bitstream Charter">
-    <%= link_to "Go to Treasure Hunt", index_path, class: "btn btn-success"%>
-    </div>
-    <%end %>
-    </p>
-
+<div class="contact">
+  <p>Contact:</p>
+  <p> Richa Agarwal(+91-8016042603)</p>
+  <p> Anjali Agrawal(+91-7063494551)</p>
+</div>
 
 </body>
 </html>

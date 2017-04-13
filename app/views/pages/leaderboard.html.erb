@@ -1,13 +1,27 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
+  <style>
+    /* Set black background color, white text and some padding */
+    body{
+       height: 100%;
+   width: 100%;
+
+       background-image:  linear-gradient(rgba(255,255,255,.6), rgba(255,255,255,.6)),url("leader.jpeg");
+   background-repeat: no-repeat;
+   background-size: 1600px 800px;
+   overflow: auto;
+
+    }
+
+    </style>
 <meta charset="utf-8">
   <link href="css/default.css" rel="stylesheet">
 </head>
 
 
 <div class="container">
-<h3 align="center">Leaderboard<%= link_to "Hunt", index_path, class: "btn-small btn-success", style: "float: right; border-radius: 5%;"%></h3>
+<h3 align="center" style="font-family: 'Supercell-magic';">Leaderboard<%= link_to "Hunt", index_path, class: "btn-small btn-success", style: "float: right; border-radius: 5%;"%></h3>
 
   <div class="row">
       <div class="table-responsive">
@@ -20,7 +34,7 @@
               <th>Score</th>
             </tr>
           </thead>
-          <tbody id="myTable">
+          <tbody id="myTable" style="font-family: 'Supercell-magic';">
           <%@users.each do|u| %>
           <% if u == current_user %>
           <tr bgcolor="#ecf0f1">

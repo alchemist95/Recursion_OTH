@@ -3,18 +3,15 @@
 <head>
   <style>
     /* Set black background color, white text and some padding */
-
     body{
        height: 100%;
    width: 100%;
 
-      background-image: url("http://www.guoguiyan.com/data/out/144/69896840-papyrus-wallpapers.jpeg");
-      overflow: scroll;
-      background-size:100% 100%;
-        background-repeat: no-repeat;/*we want to have one single image not a repeated one*/
-   background-size: cover;
-      padding-left: 40px;
-      margin-top: 60px;
+       background-image:  linear-gradient(rgba(255,255,255,.4), rgba(255,255,255,.4)),url("treasure.jpg");
+   background-repeat: no-repeat;
+   background-size: 1600px 800px;
+   overflow: auto;
+
     }
 
     #answerForm{
@@ -23,93 +20,82 @@
     h2{
       font-family: "Bitstream Charter";
     }
+
+ #aPlayer > audio { width: 100% }
+        /* Chrome 29+ */
+@media screen and (-webkit-min-device-pixel-ratio:0)
+  and (min-resolution:.001dpcm) {
+       /* HIDE DOWNLOAD AUDIO BUTTON */
+     #aPlayer {
+           overflow: hidden;width: 390px; 
+        }
+
+    #aPlayer > audio { width: 420px; }
+}
+
+/* Chrome 22-28 */
+@media screen and(-webkit-min-device-pixel-ratio:0) {
+    
+      #aPlayer {
+           overflow: hidden;width: 390px; 
+        }
+
+    #aPlayer > audio { width: 420px; }
+}
+
   </style>
 </head>
 <body>
 
-<!-- navbar -->
-<div class="navbar-wrapper">
-
- <nav class="navbar navbar-inverse navbar-fixed-top">
- <div class="navbar-inner">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <h1 class="brand"> <a  href="#">Quaerere</a> </h1>
-    </div>
-    <ul id="menu-main" class="nav navbar-nav navbar-right">
-    <% if current_user && current_user.admin? %>
-    <li><%= link_to "ADMIN",rails_admin_path %></li>
-    <% end %>    <li><a title="team" href="home">Home</a></li>
-        <% if current_user!=nil %>
-         <li><a title="team" href="leaderboard">Leaderboard</a></li>
-         <% end %>
-          <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Rules
-        <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a>1. Write all answers in lowercase.</a></li>
-          <li><a>2. Don't include space between two words.</a></li>
-          <li><a>3. Try to link the question with the image and audio.</a></li>
-
-        </ul>
-      </li>
-
-      <% if current_user!=nil %>
-      <li><a>Score:<span id="myScore"><%= current_score %></span></a></li>
-      <li><a>Level:<span id="myLevel">
-      <% if @question!=nil%>
-      <%= (current_score==0)?1:current_score/10+1 %><%end%></span></a></li>
-
-      <li><%= image_tag(current_user.image_url, size: '50x50') %>&nbsp;&nbsp;</li>
-      <li class="dropdown">
-
-         <a  class="dropdown-toggle" data-toggle="dropdown" href="#"><%= current_user.name %> <span class="caret"></span></a>
-       <ul class="dropdown-menu">
-
-          <li><%= link_to "Sign out", 'sign_out', method: :delete , class: "nav-link"%></li>
-        </ul>
-      </li>
-      <% else %>
-      <li><a>Login ::</a></li>
-      <li ><a href="auth/facebook"> <img border="0" alt="facebook" src="fb.jpg" class="img-circle"width="30" height="30"></a></li>
-      <li ><a href="/auth/google_oauth2"> <img border="0" alt="Gmail" src="gmail.jpg" class="img-circle" width="30" height="30"></a></li>
-      <% end %>
-    </ul>
-  </div>
-  </div>
-</nav>
-</div>
-
 
 <div class="container">
+<h2 align="center" style="font-family: 'Supercell-magic';"><%= link_to "Home", home_path, class: "btn-small btn-success", style: "float: left; border-radius: 5%;"%>Score: <span id="myScore"><%= current_user.score %></span><%= link_to "Leaderbaord", leaderboard_path, class: "btn-small btn-success", style: "float: right; border-radius: 5%;"%></h2>
+<div class="row">
+
   <% if current_user %>
+
       <div id="hunt">
         <% if @question!=nil %>
-          <div id="myQuestion">         
-           <span><%= raw(@question.statement) %></span>           
-          </div>
+                
+          <div class="col-md-6 panel" style="background: none">
 
+            <div id="myQuestion" class="panel-heading">         
+             <span><%= raw(@question.statement) %></span>           
+            </div>
+             <br />
+
+              <div id="aPlayer">
+              <% if !@question.audiourl.empty? %>
+              <audio controls="controls">
+                <source src="/audios/recursion.wav" type="audio/mpeg" control="true"/>
+              </audio>
+              <% end %>
+              </div> 
+
+         
+          
           <span id="myImage">
           <% if @question.imageurl!="noimg.png" %>
           <%= image_tag(@question.imageurl)%>
           <%end %>
           </span>
 
-            <span id="myAudio">
-            <% if !@question.audiourl.empty? %>            
-            <%= audio_tag(@question.audiourl, autoplay: false, controls: true) %>
-            <%end%> 
-            </span>
+         </div>
 
-           </br></br>
+            <div class="col-md-6">
+            <br /> <br /><br /> <br /><br /> <br /><br /> <br />
+<br /> <br /><br /> <br /><br /> <br /><br /> <br />
+
             <form id="answerForm">
-            <input type="text-area" name="answer" id="myAnswerText" style="font-size:18pt;height:40px;width: 600px;"><br /><br />
-            <input class="btn btn-info" type="submit" value="Hit" name="submit" id="myAnswer">
-            </form>
+                <input type="text-area" name="answer" id="myAnswerText" style="font-size:18pt;height:40px;width: 500px;"><br /><br />
+                <input  style="font-family: 'Supercell-magic';" class="btn btn-danger" type="submit" value="Hit" name="submit" id="myAnswer">
+                </form>
+                </div>
 
-            </div>
-            
+
         <% end %>
+      </div>
+      </div>
       
   <div id="myResult">
   </div>

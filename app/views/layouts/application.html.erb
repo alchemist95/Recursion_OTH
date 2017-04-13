@@ -10,6 +10,38 @@
   </head>
 
  <body>
+       <!--  <li><a title="Home" href="home">Home</li>
+        <% if current_user!=nil %>
+        <li><a title="team" href="leaderboard">Leaderboard</a></li>
+         <% end %>
+        
+      <% if current_user!=nil %>
+      <li><a>Score:<span id="myScore"><%= current_score %></span></a></li>
+      <% if @question!=nil%>
+      <li><a>Level:<span id="myLevel">
+      
+      <%= (current_score==0)?1:current_score/10+1 %>
+        <%end%>
+      </span></a></li>
+      <li><%= image_tag(current_user.image_url, size: '50x50') %>&nbsp;&nbsp;</li>
+      <li class="dropdown">
+
+         <a  class="dropdown-toggle" data-toggle="dropdown" href="#"><%= current_user.name %> <span class="caret"></span></a>
+       <ul class="dropdown-menu">
+
+          <li><%= link_to "Sign out", 'sign_out', method: :delete , class: "nav-link"%></li>
+        </ul>
+      </li>
+      <% else %>
+      <li><a>Login ::</a></li>
+      <li ><a href="auth/facebook"> <img border="0" alt="facebook" src="fb.jpg" class="img-circle"width="30" height="30"></a></li>
+      <li ><a href="/auth/google_oauth2"> <img border="0" alt="Gmail" src="gmail.jpg" class="img-circle" width="30" height="30"></a></li>
+      <% end %>
+    </ul>
+  </div>
+  </div> -->
+
+
  <% unless flash.empty? %>
      <script type="text/javascript">
           <% flash.each do |f| %>
