@@ -1,4 +1,4 @@
-  <!DCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
   <style>    
@@ -7,17 +7,40 @@
        height: 100%;
    width: 100%;
 
-      background-image: url("congrats.gif");
+      background-image: linear-gradient(rgba(255,255,255,.2), rgba(255,255,255,.2)),url("victor.jpg");
       overflow: hidden;
-       position: relative;
-        margin-top: 200px;
-      text-align: center;
-    }
+      background-size: cover;
+       }
     h1{
-      color: white;
-    }
+    /*margin-top: 50px;*/
+    margin-left: 50px;
+    color: #E4F1FE;
+    text-shadow: inherit;
+    text-decoration-style: solid;
+    font-weight: 1000;
+    font-size: 70px;
+    font-family: "Supercell-magic";
+    /*float:right;*/
+    padding-right: 90px;
+      margin-left: 60px; 
+    /*padding-top: 50px;*/
+
+  }
+  h3{
+    font-family: "Supercell-magic";
+    
+  }
+
   </style>
 </head>
-<body>
-<a href="leaderboard" class="btn btn-info" style="font-family: 'Supercell-magic';" role="button">Leaderboard</a>
-</body>
+
+<div class="row">
+<h1>You the Goblin!!</h1><br /><br /><br />
+</div>
+
+
+<div class="row">
+
+<h3 style="margin-left:250px;"><%= link_to "Leaderboard", leaderboard_path, class: "btn-large btn-danger"%></h3>
+
+</div>
