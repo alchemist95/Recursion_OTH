@@ -1,4 +1,4 @@
-class PagesController < ApplicationController
+  class PagesController < ApplicationController
   before_action :set_auth
   before_action :find_question, only: [:index, :abdv]
   before_action :open_on_day, only: [:index, :home, :victory]
@@ -60,9 +60,11 @@ class PagesController < ApplicationController
   end
 
   def wait
+    flash[:error] = "Hunt begins at 1400 hrs"
   end
 
 	def home
+    flash.clear
     user=current_user
   end
 
@@ -95,13 +97,10 @@ class PagesController < ApplicationController
   private
 
   def open_on_day
-    if current_user && current_user.admin?
-      return
-    end
-    time = Time.new
-    day = time.day.to_s
-    if day != "15"
+    if current_user && current_user.normal?
       redirect_to wait_path
+    else
+      return
     end
   end
 
