@@ -23,8 +23,8 @@
 
 //= require toastr_rails
 
+  @font-face {
+    font-family: 'myfont';
+    src: url('<%= asset_path 'supercell.ttf' %>') format('truetype');
 
-@font-face{
-	font-family: 'Supercell-magic';
-	src: utl('assets/coc.ttf');
-}
+  }

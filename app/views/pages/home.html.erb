@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<!-- <link href="css/bootstrap-responsive.css" rel="stylesheet">
 <link href="css/style.css" rel="stylesheet">
-<link href="css/default.css" rel="stylesheet">
+<link href="css/default.css" rel="stylesheet"> -->
 <link rel="shortcut icon" href="assets/images/favicon.ico">
 
 <!-- =======================================================
@@ -14,6 +14,14 @@
     Author URL: https://bootstrapmade.com
 ======================================================= -->
 <style >
+
+  @font-face {
+    font-family: 'myfont';
+    src: url('<%= asset_path 'supercell.ttf' %>') format('truetype');
+
+  }
+
+
   body{
     height: 100%;
     width: 100%;
@@ -32,10 +40,10 @@
     text-decoration-style: solid;
     font-weight: 1000;
     font-size: 70px;
-    font-family: "Supercell-magic";
+    font-family: "myfont";
     /*float:right;*/
     padding-right: 90px;
-      margin-left: 100px; 
+      margin-left: 90px;
     /*padding-top: 50px;*/
 
   }
@@ -45,16 +53,17 @@
     text-decoration-style: solid;
     /*font-weight: 700;*/
     font-size: 16px;
-    font-family: "Supercell-magic";
+    font-family: "myfont";
     /*float:right;*/
     padding-right: 80px;
-      margin-left: 50px;
     color:#3A539B;
+
+    margin-left: 50px;
   }
 
   .contact{
     color:white;
-    font-family: "Supercell-magic";
+    font-family: "myfont";
     float: right;
     /*padding-right: 80px;
     padding-top:300px;
@@ -67,49 +76,50 @@
   }
 
   #mybutton{
+    font-family: "myfont";
+
     /*padding-right: 80px;
     padding-left: 100px;*/
-    font-family: "Supercell-magic";
-    margin-left: 0px;
     margin-right: 0px;
-         margin-left: 50px;
-     
+        margin-left: 50px;
+
+
   }
 </style>
 </head>
 <body>
 
 <div class="col-md-6 col-md-offset-3">
-    <h1><span style="color:#F7CA18;">REC</span>hase</h1>
-    
+    <h1><span style="color: #F7CA18">REC</span>hase</h1>
+
     <div class="matter">
       <p>
         <div id="about">
           <p style="text-align: center;">
             Welcome to the treasure hunt!!!
 
-You need to solve the questions to unlock the treasure. Since the motto of RECursion is to help people, we provide you the biggest help possible-"GOOGLE". So,guys exploit your searching abilities, wake up your grey cells and get the treasure.
-Answer in lowercase and leave no spaces between two words.
+You need to solve the question to unlock the treasure.Since the motto of RECursion is to help people,we provide you the biggest help possible-"GOOGLE". So,guys exploit your searching abilities,wake up your grey cells and get the treasure.
+Answer in lowercase and no spaces between two words.
 <br/>
 <br/>
 </p>
 </div>
 </p>
 </div>
+
           <div id="mybutton">
           <% if current_user && current_user.score!=180%>
               <%= link_to "Go to Hunt", index_path, class: "btn btn-danger"%>
-                 <%= link_to "Leaderboard", leaderboard_path, class: "btn btn-success"%>     
+                 <%= link_to "Leaderboard", leaderboard_path, class: "btn btn-success"%>
               <%= link_to "Sign out", 'sign_out', method: :delete , class: "btn btn-info"%>
           <% else %>
               <%= link_to "Facebook", '/auth/facebook', class: "btn btn-info"%>
               <%= link_to "Google+", '/auth/google_oauth2', class: "btn btn-danger"%>
               <%= link_to "Leaderboard", leaderboard_path, class: "btn btn-success"%>
-              
+
               <%end %>
         </div>
       </div>
-    </div>
 </div>
 
 <div class="contact">
