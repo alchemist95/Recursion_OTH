@@ -22,3 +22,9 @@
 
 
 //= require toastr_rails
+
+
+@font-face{
+	font-family: 'Supercell-magic';
+	src: utl('/assets/fonts/coc.ttf');
+}
