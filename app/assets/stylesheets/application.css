@@ -23,8 +23,4 @@
 
 //= require toastr_rails
 
-  @font-face {
-    font-family: 'myfont';
-    src: url('<%= asset_path 'supercell.ttf' %>') format('truetype');
 
-  }
