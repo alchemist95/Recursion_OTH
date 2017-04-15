@@ -60,7 +60,6 @@
   end
 
   def wait
-    flash[:error] = "Hunt begins at 1400 hrs"
   end
 
 	def home
