@@ -36,6 +36,7 @@
           </thead>
           <tbody id="myTable" style="font-family: 'myfont';">
           <%@users.each do|u| %>
+          <% if u.normal? %>
           <% if u == current_user %>
           <tr bgcolor="#ecf0f1">
           <% else %>
@@ -47,6 +48,7 @@
               <td><%= u.score %></td>
            </tr>
           <% @id=@id+1 %>
+          <% end %>
           <% end %>
           </tbody>
         </table>   
