@@ -12,10 +12,7 @@
   end
 
 	def index
-    if @question == nil
-      redirect_to victory_path
-    end
-
+    redirect_to over_path
     if params[:answer].present? && params[:answer] == @question.answer
       user = current_user
       user.score = user.score+10
@@ -59,7 +56,7 @@
  
   end
 
-  def wait
+  def over
   end
 
 	def home

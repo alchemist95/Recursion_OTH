@@ -13,7 +13,7 @@ Rails.application.routes.draw do
         get 'victory' => 'pages#victory'
         get 'loginsignup' => 'sessions#loginsignup'
        get '/user/:id' => 'pages#edit'
-       get 'wait' => 'pages#wait'
+       get 'over' => 'pages#over'
       get 'users' =>'pages#edit'
       post 'users' => 'pages#home'
         get 'auth/:provider/callback', to: "sessions#create"
